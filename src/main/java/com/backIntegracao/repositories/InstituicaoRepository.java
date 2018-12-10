@@ -12,6 +12,10 @@ import com.backIntegracao.domain.Instituicao;
 public interface InstituicaoRepository extends JpaRepository<Instituicao, String> {
 	
 	@Transactional(readOnly=true)
+	@Query("SELECT obj FROM Instituicao obj WHERE obj.municipio.estado.id_uf <> '000000' ORDER BY obj.no_fantasia")
+	public List<Instituicao> findAllInstituicoes();
+	
+	@Transactional(readOnly=true)
 	@Query("SELECT obj FROM Instituicao obj WHERE obj.municipio.estado.id_uf = :estadoId ORDER BY obj.no_fantasia")
 	public List<Instituicao> findInstituicaoByEstado(@Param("estadoId") String estado_id);
 	

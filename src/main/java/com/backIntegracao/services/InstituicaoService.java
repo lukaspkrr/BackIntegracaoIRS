@@ -1,6 +1,5 @@
 package com.backIntegracao.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +43,7 @@ public class InstituicaoService {
 				return repo.findInstituicaoByEstado(estado_id);
 			}
 		}
-		return new ArrayList<Instituicao>();
+		return repo.findAllInstituicoes();
 	}
 
 }
